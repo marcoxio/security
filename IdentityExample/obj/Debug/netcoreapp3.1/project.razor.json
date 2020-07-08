@@ -20541,6 +20541,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\Secret.cshtml",
+      "TargetPath": "Views\\Home\\Secret.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\Login.cshtml",
       "TargetPath": "Views\\Home\\Login.cshtml",
       "FileKind": "mvc"
