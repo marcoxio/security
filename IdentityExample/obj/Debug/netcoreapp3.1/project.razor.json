@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\Basics\\Basics.csproj",
+  "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\IdentityExample.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20518,16 +20518,31 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "Basics",
+  "RootNamespace": "IdentityExample",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\Basics\\Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\Basics\\Views\\Home\\Secret.cshtml",
-      "TargetPath": "Views\\Home\\Secret.cshtml",
+      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\Register.cshtml",
+      "TargetPath": "Views\\Home\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\VerifyEmail.cshtml",
+      "TargetPath": "Views\\Home\\VerifyEmail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\EmailVerification.cshtml",
+      "TargetPath": "Views\\Home\\EmailVerification.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\manji\\OneDrive\\Documentos\\Security\\IdentityExample\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
       "FileKind": "mvc"
     }
   ],
