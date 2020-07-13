@@ -1,15 +1,27 @@
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Threading.Tasks;
+using Basics.CustomPolicyProvider;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static Basics.CustomPolicyProvider.CustomAuthorizationPolicyProvider;
 
 namespace Basics.Controllers
 {
     public class HomeController : Controller
     {
 
-        public IActionResult Index(){
+    
+        private readonly IAuthorizationService _authorizationService;
+
+        public HomeController(IAuthorizationService authorizationService)
+        {
+            _authorizationService = authorizationService;
+        }
+
+        public IActionResult Index()
+        {
             return View();
         }
 
@@ -31,6 +43,19 @@ namespace Basics.Controllers
             return View("Secret");
         }
 
+        [SecurityLevel(5)]
+        public IActionResult SecretLevel()
+        {
+            return View("Secret");
+        }
+
+        [SecurityLevel(10)]
+        public IActionResult SecretHigherLevel()
+        {
+            return View("Secret");
+        }
+
+        [AllowAnonymous]
         public IActionResult Authenticate()
         {
             var grandmaClaims = new List<Claim>(){
@@ -38,6 +63,7 @@ namespace Basics.Controllers
                 new Claim(ClaimTypes.Email, "Bob@fmail.com"),
                 new Claim(ClaimTypes.DateOfBirth, "11/11/2000"),
                 new Claim(ClaimTypes.Role, "Admin"),
+                new Claim(DynamicPolicies.SecurityLevel, "7"),
                 new Claim("Grandma.Says", "Very nice boi."),
 
             };
@@ -50,10 +76,26 @@ namespace Basics.Controllers
             var grandmaIdentity = new ClaimsIdentity(grandmaClaims, "Grandma Identity");
             var licenseIdentity = new ClaimsIdentity(licenseClaims, "Government");
 
-            var userPrincipal = new ClaimsPrincipal(new [] {grandmaIdentity});
+            var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
 
             HttpContext.SignInAsync(userPrincipal);
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DoStuff([FromServices] IAuthorizationService authorizationService)
+        {
+
+            //we are doing stuff here
+
+            var builder = new AuthorizationPolicyBuilder("Schema");
+            var customPolicy = builder.RequireClaim("Hello").Build();
+
+            var authResult = await _authorizationService.AuthorizeAsync(User, "Claim.DoB");
+            if (authResult.Succeeded)
+            {
+                return View("Index");
+            }
+            return View("Index");
         }
 
     }
