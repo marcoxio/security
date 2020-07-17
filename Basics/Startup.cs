@@ -43,6 +43,11 @@ namespace Basics
                     // .Build();
 
                     // config.DefaultPolicy = defaultAuthPolicy;
+
+                    //config.AddPolicy("Claim.DoB", policyBuilder =>
+                    //{
+                    //    policyBuilder.RequireClaim(ClaimTypes.DateOfBirth);
+                    //});   
                     config.AddPolicy("Admin", policyBuilder => policyBuilder.RequireClaim(ClaimTypes.Role, "Admin"));
 
                     config.AddPolicy("Claim.DoB",policyBuilder =>
@@ -61,7 +66,25 @@ namespace Basics
             
             
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(config =>
+            {
+                var defaultAuthBuilder = new AuthorizationPolicyBuilder();
+                var defaultAuthPolicy = defaultAuthBuilder
+                    .RequireAuthenticatedUser()
+                    .Build();
+
+                // global authorization filter
+                //config.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
+            });
+
+            services.AddRazorPages()
+                .AddRazorPagesOptions(config =>
+                {
+                    config.Conventions.AuthorizePage("/Razor/Secured");
+                    config.Conventions.AuthorizePage("/Razor/Policy","Admin");
+                    config.Conventions.AuthorizeFolder("/RazorSecured");
+                    config.Conventions.AllowAnonymousToPage("/RazorSecured/Anon");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +108,7 @@ namespace Basics
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }

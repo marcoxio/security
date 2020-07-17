@@ -30,3 +30,6 @@ C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Basic
 C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Basics.Views.pdb
 C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Basics.csproj.CopyComplete
 C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Razor\Views\Home\Secret.cshtml.g.cs
+C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Razor\Pages\Razor\Index.cshtml.g.cs
+C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Razor\Pages\Razor\Policy.cshtml.g.cs
+C:\Users\manji\OneDrive\Documentos\Security\Basics\obj\Debug\netcoreapp3.1\Razor\Pages\Razor\Secured.cshtml.g.cs
